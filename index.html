@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+<!-- Google Chrome Frame for IE -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>
+		Title
+	</title>
+
+	<meta name="description" content="A presentation about antipatterns in web design, usability, accessibility, and hard truths.">
+	<meta name="author" content="Michael Schofield">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- Stylesheets
+======================
+--> <link rel="stylesheet" href="css/reveal.min.css">
+	<link rel="stylesheet" href="css/theme/typeplate.css" id="theme">
+
+
+	<!-- Syntax Highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<!-- Javascript
+======================
+-->	<script>
+		document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+	<!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+
+			<section>
+				
+				<h1>
+					<small>#WPMIA</small> <br>
+					♥ <br>
+					performance
+				</h1>
+				<h5 style="text-align: right; margin-top: 1em;">by <b>Michael Schofield</b>
+					<br> www.ns4lib.com
+					<br> <small> ↑ I blog about work :/ </small>
+				</h5>
+
+			</section>
+
+			<section style="text-align: left;">
+
+			<!-- Today's Web
+			======================
+			-->	<section>
+					<h1>Today's Web</h1>
+
+					<p class="fragment">
+						3.6 <b>million</b> new smartphones <em class="fragment">every day.</em> <small class="fragment">There are only 371 thousand new people every day.</small>
+					</p>
+
+					<h1 style="text-align: center;" class="fragment">↓</h1>
+
+				</section>
+
+			<!-- 56%
+			======================
+			-->	<section>
+					<p>
+						This summer, <strong>more than half</strong> of American adults have a smartphone.
+					</p>
+
+					<h1 style="text-align: center;">56%</h1>
+				</section>
+
+			<!-- 25%
+			======================
+			-->	<section>
+					<p>
+						For a quarter of all Americans, their phone is their one and only device! <br>
+						<small class="fragment"><em>Not</em> luddites.</small>
+					</p>
+
+					<h1 style="text-align: center;">25%</h1>
+				</section>
+
+			<!-- Access
+			======================
+			-->	<section>
+					<h3>Access Increases</h3>
+					<h2>Bandwidth Decreases</h2>
+					<ul>
+						<li>
+							Average size of a web page: 1.5mb
+
+							<ul>
+								<li><b>Context:</b> the mean time to load 700kb
+									<ul>
+										<li>... from desktop: 6.9 seconds</li>
+										<li>... from phone: 10.2 seconds</li>
+									</ul>
+								</li>
+
+								<li>For certain devices, 3mb + triggers <b>Error 413</b> <span class="fragment">- entity too large :)</span></li>
+
+							</ul>
+						</li>
+
+						<li class="fragment">Images are to blame for 52-59% of the payload
+							<ul>
+								<li class="fragment">Javascript comes in second :/</li>
+								<li class="fragment"><a href="http://shouldiuseacarousel.com">www.shouldiuseacarousel.com</a></li>
+							</ul>
+						</li>
+
+						<li class="fragment">All the while, 3G and 4G LTE networks are getting slower.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2><b>#wpmia</b> ♥ </h2>
+					<h1>Performance</h1>
+					For every <strong>1 second</strong> that a page takes to load there is a <strong>65% bounce rate.</strong>
+					<h1 style="text-align: center;">65%</h1>
+				</section>
+
+				<section>
+					<h2><b>#wpmia</b> ♥ </h2>
+					<h1>Performance</h1>
+					71% of users <strong>expect</strong> mobile sites to load as fast or <em>faster</em> than desktops.
+					<h1 style="text-align: center;">71%</h1>
+				</section>
+
+				<section>
+					<h2><b>#wpmia</b> ♥ </h2>
+					<h1>Performance</h1>
+					The percentage of users that will abandon your website if it takes more than <strong>4 seconds</strong> to load on mobile:
+					<h1 style="text-align: center;">74%</h1>
+				</section>
+
+			</section>
+
+
+			<section>
+				<section>
+					<div style="text-align: left;">
+					<h2>Warmup!</h2>
+					<h4>
+						How much <b>web</b> content can we identify?
+					</h4>
+					</div>
+					<pre><code contenteditable>
+Hmm ...
+1. Blogs
+2. Recipes
+3. Gossip
+4. 
+
+// group exercise!!! (yay)
+						</code></pre>
+<h1>↓</h1>
+				</section>
+
+				<section>
+					<h1>Lots</h1>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<div style="text-align: left;">
+					<h2>Warmup!</h2>
+					<h4>
+						How much <b>print-only</b> content can we identify?
+					</h4>
+					</div>
+					<pre><code contenteditable>
+Hmm ...
+1. Policies (?) 
+2. Meeting Minutes (?)
+3.
+
+// group exercise!!! (yay)
+						</code></pre>
+<h1>↓</h1>
+				</section>
+
+				<section>
+					<h1>Not Very Much At All</h1>
+				</section>
+			</section>
+
+			<section style="text-align:left;">
+				<h3>
+					Write for the <b>web first</b>, for print second ...
+				</h3>
+
+				<p>
+					because it's almost guaranteed that it will end-up online. Whether or not you actually <em>print</em> the content is much more rare. 
+				</p>
+
+			</section>
+			<section style="text-align: left;">
+				<h3>
+					Content must be <b>meaningful</b> ... 
+				</h3>
+				<p>
+					Uploading PDFs and Word documents doesn't really cut it. <span class="fragment">A PDF <em>isn't</em> a document, not usually. It's a picture.</span> <span class="fragment">Not every device recognizes proprietary formats.</span>
+				</p>
+
+				<p class="fragment">
+					<b>If it doesn't get crawled it doesn't count.</b>
+				</p>
+			</section>
+
+			<section style="text-align: left;">
+				<h1>So ...</h1>
+				<h3>Should librarians learn to code?</h3>
+				<p class="fragment">
+					I'm kind of sick of this question. This isn't realistic. The nature of code is that the specifications are constantly evolving. It's unfair to demand currency when the librarian is also expected to specialize somewhere else. <span class="fragment">Two or three year old fluency is like speaking middle English in the valley.</span>
+				</p>	
+			</section>
+
+			<section style="text-align: left;">
+		
+				<h4>
+					He coude songes make, and wel endite.
+				</h4>
+				<h1>Like, for sure.</h1>
+
+			</section>
+
+			<section style="text-align: left;">
+				<h1>Markdown</h1>
+				<h4>is a pretty good intermediary</h4>	
+				<ol>
+					<li>It has a fairly simple syntax.</li>
+					<li>It compiles into clean HTML</li>
+					<li>With the right add-ons, it converts to <b>all</b> document formats: .doc, .pdf, .rtf, html (of course), and more.</li>
+				</ol>
+				<br><br>
+				<p class="fragment">The idea is that Markdown's formatting syntax is to make it as readable as possible. A Markdown-formated document could be publishable as-is, as plain text, and still communicate structure.</p>
+			</section>		
+
+			<section style="text-align: left;">
+				<h1>Markdown</h1>
+				<h3>is for writing.</h3>
+
+				<br><br>
+
+				<h1>HTML</h1>
+				<h3>is for publishing.</h3>
+			</section>
+
+			<section style="text-align: left;">
+				<h1># Markdown</h1>
+				<h2>## is pleasant</h2>
+				<h3>### I think you'll like it.</h3>
+			</section>
+
+			<section style="text-align: left;">
+				<h1>Getting Started</h1>
+				<h3>You'll need ...</h3>
+				<ol>
+					<li>
+						Something to write markdown in.
+						<ul>
+							<li>Plenty of apps for Mac, fewer for Windows</li>
+							<li>
+								I like <a href="http://www.sublimetext.com/" target="new">Sublime Text</a> because there are a plethora of plugins, including <a href="http://johnmacfarlane.net/pandoc/" target="new">Pandoc</a> universal format conversion - which, while great on its own, kind of sucks if you don't like the command line.
+							</li>
+							<li>Keep your eye on <a href="http://editorially.com">Editorially</a>. Currently in beta, has a beautiful UI, and they will eventually support conversion to Word, PDF, etc.</li>
+							<li><b>For this workshop we'll use <a href="http://www.dillinger.io" target="new">Dillinger.io</a></b></li>
+						</ul>
+					</li>
+					<li class="fragment">
+						That's about it.
+					</li>
+				</ol>
+			</section>
+
+			<section style="text-align: left;">
+				<section>
+					<h1>The Basics</h1>
+					<h3>Headers</h3>
+
+					<pre><code contenteditable>
+A First Level Header
+====================
+
+A Second Level Header
+---------------------
+
+# First Level
+## Second Level
+### Third Level
+#### ... so on
+
+This is the same as writing
+
+&lt;h1&gt; First Level &lt;/h1&gt;
+&lt;h2&gt; Second Level &lt;/h2&gt;
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>The Basics</h1>
+					<h3>Paragraphs and blockquotes</h3>
+
+					<pre><code contenteditable>
+This is a paragraph!
+
+Here's the second paragraph!
+
+> This is a blockquote
+
+&lt;p&gt; This is a paragraph! &lt;/p&gt;
+
+&lt;blockquote&gt; This is a blockquote &lt;blockquote&gt;
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>The Basics</h1>
+					<h3>Emphasis</h3>
+
+					<pre><code contenteditable>
+Guess which words are *italicized*.
+Maybe you don't like asterisks but you still want to _italicize something_.
+
+Or you could **bold** __a phrase__ by doubling up!
+
+In HTML, you would &lt;i&gt;italicize&lt;/i&gt; and &lt;b&gt;bold&lt;/b&gt;
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>The Basics</h1>
+					<h3>Lists</h3>
+
+					<pre><code contenteditable>
+* First Item
+* Second Item
+* Third Item
+
++ Plus Signs
++ Work Too
+
+- Or dashes
+- No biggie.
+
+They all produce
+
+&lt;ul&gt;
+  &lt;li&gt; First Item &lt;/li&gt;
+  &lt;li&gt; Second Item &lt;/li&gt;
+  &lt;li&gt; Third Item &lt;/li&gt;
+&lt;/ul&gt;
+
+1. This is a numbered list
+2. See? Not too bad.
+
+Which produces
+
+&lt;ol&gt;
+  &lt;li&gt; First Item &lt;/li&gt;
+  &lt;li&gt; Second Item &lt;/li&gt;
+&lt;/ol&gt;
+
+					</code></pre>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>The Basics</h1>
+					<h3>Links</h3>
+
+					<pre><code contenteditable>
+[Inline Link Title](http://link.com/)
+[Accessible Inline Link](http://link.com/ "Title")
+[Or Even This][link]
+
+
+// bottom of doc or wherever
+[link]: http://link.com
+
+All compile to <a href="http://link.com" title="Title"> Link </a>
+					</code></pre>
+				</section>
+				
+				<section style="text-align: left;">
+					<h1>The Basics</h1>
+					<h3>Images</h3>
+
+					<pre><code contenteditable>
+![Alternate Text](http://link.com/image.jpg "Title")
+
+or
+
+![Alternate Text][image1]
+
+// bottom of doc or wherever
+[image1]: http://link.com/image "Title"
+
+All compile to <img src="http://link.com/image" alt="Alternate text" title="Title" />
+					</code></pre>
+				</section>
+
+			</section>
+			
+			<section style="text-align: left;">
+				<h1>Github Flavored Markdown</h1>
+				<h3>In case you see this.</h3>
+
+				<p>
+					Differences
+					<ul>
+						<li>Line breaks </li>
+						<li>Autolinking</li>
+						<li>~~Strikethrough~~ <strike>Strikethrough</strike></li>
+						<li>And other nice things for coders</li>
+
+					</ul>
+				</p>
+			</section>
+
+			<section style="text-align: left;">
+				<section>
+					<h3>This is all useless unless you can</h3>
+					<h1>Convert</h1>
+					<h1 style="text-align: center;">↓</h1>
+				</section>
+				<section>
+					<h3><a href="http://johnmacfarlane.net/pandoc/">Pandoc</a></h3>
+					<p>
+						"If you need to convert files from one markup format into another, pandoc is your swiss-army knife." Created by John MacFarlane. <span class="fragment"><b>Except it's on the command line.</b> Bad or overly technical UI doesn't make conversion widely adoptable.</span>
+					</p>
+					<ul class="fragment">
+						<li> <a href="http://editorially.com">Editorially</a> [Future Feature]</li>
+						<li><a href="http://markdownpad.com/">MarkdownPad</a> or <a href="http://www.markdownpro.com/">MarkdownPro</a> [PDF], etc.</li>
+						<li>
+							For now, I like Pandoc via <a href="http://sublimetext.com">Sublime Text</a> Plugins. Similar plugins are also available for NotePad ++.
+						</li>
+					</ul>
+				</section>
+			</section>
+			
+			<section>
+				<h1>Q's?</h1>
+			</section>
+			
+			<section>
+				<img src="images/dftba.png">
+			</section>
+	
+			
+		</div><!--/.slides-->
+	</div><!--/.reveal-->
+
+<!-- More Javascript
+======================
+-->	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.min.js"></script>
+
+	<script>
+
+		// Full list of configuration options available here:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			
+			center: false,
+			controls: true,
+			progress: true,
+			history: true,
+			rollingLinks: false,
+			transitionSpeed: 'slow',
+
+			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+			transition: Reveal.getQueryHash().transition || 'linear', // 
+			
+			// Optional libraries used to extend on reveal.js
+			dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+				// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+			]
+		});
+
+	</script>
+
+</body>
+</html>
